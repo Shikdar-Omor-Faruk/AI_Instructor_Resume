@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shikdar Omor Faruk | AI Trainer & ICT Instructor</title>
+    <meta name="description" content="Portfolio of Shikdar Omor Faruk - ICT Instructor, AI Enthusiast, and Founder of BitByte ICT Academy">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#18181B',
+                        secondary: '#3F3F46',
+                        cta: '#2563EB',
+                        surface: '#FAFAFA',
+                        ink: '#09090B',
+                    },
+                    fontFamily: {
+                        handwritten: ['Caveat', 'cursive'],
+                        body: ['Quicksand', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Quicksand', sans-serif; }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .fade-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .skill-tag {
+            transition: background-color 0.2s ease-out, color 0.2s ease-out, transform 0.2s ease-out;
+        }
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #2563EB;
+            transition: width 0.3s ease-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB, #7C3AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-bg {
+            background: radial-gradient(ellipse at 20% 50%, rgba(37,99,235,0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(124,58,237,0.04) 0%, transparent 50%),
+                        #FAFAFA;
+        }
+
+        .cert-card {
+            transition: border-color 0.3s ease-out, box-shadow 0.3s ease-out;
+        }
+        .cert-card:hover {
+            border-color: #2563EB;
+            box-shadow: 0 4px 20px rgba(37,99,235,0.1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-up, .fade-left, .fade-right, .scale-in {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .card-hover:hover { transform: none; }
+            .skill-tag:hover { transform: none; }
+        }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-out;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-surface text-ink antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-4 left-4 right-4 z-50" role="navigation" aria-label="Main navigation">
+        <div class="max-w-6xl mx-auto bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-gray-200/60 px-6 py-3">
+            <div class="flex items-center justify-between">
+                <a href="#hero" class="font-handwritten text-2xl font-bold text-primary cursor-pointer">SOF.</a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#about" class="nav-link text-sm font-medium text-secondary hover:text-cta cursor-pointer transition-colors duration-200">About</a>
+                    <a href="#skills" class="nav-link text-sm font-medium text-secondary hover:text-cta cursor-pointer transition-colors duration-200">Skills</a>
+                    <a href="#experience" class="nav-link text-sm font-medium text-secondary hover:text-cta cursor-pointer transition-colors duration-200">Experience</a>
+                    <a href="#projects" class="nav-link text-sm font-medium text-secondary hover:text-cta cursor-pointer transition-colors duration-200">Projects</a>
+                    <a href="#certifications" class="nav-link text-sm font-medium text-secondary hover:text-cta cursor-pointer transition-colors duration-200">Certifications</a>
+                    <a href="#contact" class="bg-cta text-white px-5 py-2 rounded-xl text-sm font-semibold hover:bg-blue-700 cursor-pointer transition-colors duration-200">Contact</a>
+                </div>
+                <button id="menuBtn" class="md:hidden p-2 cursor-pointer" aria-label="Open menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-white shadow-2xl z-50 p-6 md:hidden">
+            <button id="closeMenu" class="absolute top-4 right-4 p-2 cursor-pointer" aria-label="Close menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <div class="flex flex-col gap-6 mt-12">
+                <a href="#about" class="text-lg font-medium text-secondary hover:text-cta cursor-pointer transition-colors duration-200 mobile-link">About</a>
+                <a href="#skills" class="text-lg font-medium text-secondary hover:text-cta cursor-pointer transition-colors duration-200 mobile-link">Skills</a>
+                <a href="#experience" class="text-lg font-medium text-secondary hover:text-cta cursor-pointer transition-colors duration-200 mobile-link">Experience</a>
+                <a href="#projects" class="text-lg font-medium text-secondary hover:text-cta cursor-pointer transition-colors duration-200 mobile-link">Projects</a>
+                <a href="#certifications" class="text-lg font-medium text-secondary hover:text-cta cursor-pointer transition-colors duration-200 mobile-link">Certifications</a>
+                <a href="#contact" class="bg-cta text-white px-5 py-3 rounded-xl text-center font-semibold hover:bg-blue-700 cursor-pointer transition-colors duration-200 mobile-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center pt-24 pb-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-up">
+                    <p class="font-handwritten text-xl text-cta mb-3">Hello, I'm</p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-4">
+                        Shikdar Omor<br><span class="gradient-text">Faruk</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-secondary font-medium mb-6">
+                        ICT Instructor & AI Enthusiast
+                    </p>
+                    <p class="text-secondary/80 leading-relaxed mb-8 max-w-lg">
+                        Founder of BitByte ICT Academy. Passionate about making technology accessible through AI-powered education, interactive workshops, and hands-on learning experiences.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="bg-cta text-white px-7 py-3 rounded-xl font-semibold hover:bg-blue-700 cursor-pointer transition-colors duration-200 inline-flex items-center gap-2">
+                            <span>View My Work</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="#contact" class="border-2 border-primary/20 text-primary px-7 py-3 rounded-xl font-semibold hover:border-cta hover:text-cta cursor-pointer transition-colors duration-200">
+                            Get In Touch
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-6 mt-10">
+                        <a href="https://linkedin.com/in/shikdar-omor-faruk" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-cta cursor-pointer transition-colors duration-200" aria-label="LinkedIn">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://mailto:ShikdarOmorFaruk@gmail.com" class="text-secondary hover:text-cta cursor-pointer transition-colors duration-200" aria-label="Email">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </a>
+                        <a href="https://wa.me/8801718414464" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-cta cursor-pointer transition-colors duration-200" aria-label="WhatsApp">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="fade-up hidden lg:flex justify-center" style="transition-delay: 0.2s;">
+                    <div class="relative">
+                        <div class="w-80 h-80 rounded-3xl bg-gradient-to-br from-cta/10 to-purple-500/10 flex items-center justify-center">
+                            <div class="w-64 h-64 rounded-2xl bg-white shadow-lg flex flex-col items-center justify-center gap-4 border border-gray-100">
+                                <div class="w-20 h-20 rounded-full bg-cta/10 flex items-center justify-center">
+                                    <svg class="w-10 h-10 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+                                </div>
+                                <p class="font-handwritten text-2xl text-primary">AI + Education</p>
+                                <p class="text-xs text-secondary/70 text-center px-4">Empowering the next generation through technology</p>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-md px-4 py-2 border border-gray-100">
+                            <p class="text-sm font-semibold text-cta">7+ Certifications</p>
+                        </div>
+                        <div class="absolute -top-4 -right-4 bg-white rounded-xl shadow-md px-4 py-2 border border-gray-100">
+                            <p class="text-sm font-semibold text-cta">BitByte ICT Academy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-left">
+                    <p class="font-handwritten text-xl text-cta mb-2">About Me</p>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-primary mb-6">Passionate About Making Technology Accessible</h2>
+                    <p class="text-secondary leading-relaxed mb-4">
+                        Dedicated ICT Instructor and Certified AI Enthusiast with proven expertise in Prompt Engineering, Generative AI tools (ChatGPT, Gemini, Copilot), and AI Content Creation.
+                    </p>
+                    <p class="text-secondary leading-relaxed mb-6">
+                        As the founder of BitByte ICT Academy, I have extensive experience designing engaging curricula, delivering interactive workshops, and breaking down complex technology concepts into practical, easy-to-understand lessons.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-cta/10 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-primary text-sm">Curriculum Design</p>
+                                <p class="text-secondary/70 text-xs">Engaging ICT courses</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-cta/10 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-primary text-sm">AI Workshops</p>
+                                <p class="text-secondary/70 text-xs">Hands-on training sessions</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-cta/10 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-primary text-sm">AI Content Creation</p>
+                                <p class="text-secondary/70 text-xs">Text, image & video tools</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-cta/10 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-primary text-sm">Student Mentorship</p>
+                                <p class="text-secondary/70 text-xs">Personalized guidance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-right">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-surface rounded-2xl p-6 text-center card-hover cursor-default">
+                            <p class="font-handwritten text-4xl font-bold text-cta">3+</p>
+                            <p class="text-sm text-secondary mt-1">Years Teaching</p>
+                        </div>
+                        <div class="bg-surface rounded-2xl p-6 text-center card-hover cursor-default">
+                            <p class="font-handwritten text-4xl font-bold text-cta">7</p>
+                            <p class="text-sm text-secondary mt-1">Certifications</p>
+                        </div>
+                        <div class="bg-surface rounded-2xl p-6 text-center card-hover cursor-default">
+                            <p class="font-handwritten text-4xl font-bold text-cta">CS</p>
+                            <p class="text-sm text-secondary mt-1">CS Student</p>
+                        </div>
+                        <div class="bg-surface rounded-2xl p-6 text-center card-hover cursor-default">
+                            <p class="font-handwritten text-4xl font-bold text-cta">AI</p>
+                            <p class="text-sm text-secondary mt-1">AI Specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-surface">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <p class="font-handwritten text-xl text-cta mb-2">What I Do</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary">Skills & Expertise</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- AI & Generative Tools -->
+                <div class="fade-up bg-white rounded-2xl p-6 border border-gray-100 card-hover cursor-default" style="transition-delay: 0.05s;">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3 class="font-bold text-primary mb-2">AI & Generative Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full cursor-default">ChatGPT</span>
+                        <span class="skill-tag bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full cursor-default">Gemini</span>
+                        <span class="skill-tag bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full cursor-default">Copilot</span>
+                        <span class="skill-tag bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full cursor-default">Prompt Engineering</span>
+                        <span class="skill-tag bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full cursor-default">Few-Shot</span>
+                        <span class="skill-tag bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full cursor-default">Chain-of-Thought</span>
+                    </div>
+                </div>
+                <!-- Teaching & Pedagogy -->
+                <div class="fade-up bg-white rounded-2xl p-6 border border-gray-100 card-hover cursor-default" style="transition-delay: 0.1s;">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <h3 class="font-bold text-primary mb-2">Teaching & Pedagogy</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag bg-emerald-50 text-emerald-700 text-xs px-3 py-1 rounded-full cursor-default">ICT Instruction</span>
+                        <span class="skill-tag bg-emerald-50 text-emerald-700 text-xs px-3 py-1 rounded-full cursor-default">Curriculum Design</span>
+                        <span class="skill-tag bg-emerald-50 text-emerald-700 text-xs px-3 py-1 rounded-full cursor-default">Workshop Facilitation</span>
+                        <span class="skill-tag bg-emerald-50 text-emerald-700 text-xs px-3 py-1 rounded-full cursor-default">Courseware Development</span>
+                    </div>
+                </div>
+                <!-- Data Analytics -->
+                <div class="fade-up bg-white rounded-2xl p-6 border border-gray-100 card-hover cursor-default" style="transition-delay: 0.15s;">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                    </div>
+                    <h3 class="font-bold text-primary mb-2">Data Analytics & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag bg-purple-50 text-purple-700 text-xs px-3 py-1 rounded-full cursor-default">Python</span>
+                        <span class="skill-tag bg-purple-50 text-purple-700 text-xs px-3 py-1 rounded-full cursor-default">SQL</span>
+                        <span class="skill-tag bg-purple-50 text-purple-700 text-xs px-3 py-1 rounded-full cursor-default">R</span>
+                        <span class="skill-tag bg-purple-50 text-purple-700 text-xs px-3 py-1 rounded-full cursor-default">Power BI</span>
+                        <span class="skill-tag bg-purple-50 text-purple-700 text-xs px-3 py-1 rounded-full cursor-default">Tableau</span>
+                        <span class="skill-tag bg-purple-50 text-purple-700 text-xs px-3 py-1 rounded-full cursor-default">Jupyter</span>
+                        <span class="skill-tag bg-purple-50 text-purple-700 text-xs px-3 py-1 rounded-full cursor-default">VS Code</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <p class="font-handwritten text-xl text-cta mb-2">My Journey</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary">Work Experience</h2>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="fade-up relative pl-8 border-l-2 border-cta/20">
+                    <div class="absolute left-0 top-0 w-4 h-4 bg-cta rounded-full -translate-x-[9px] mt-1"></div>
+                    <div class="bg-surface rounded-2xl p-6 card-hover cursor-default">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
+                            <div>
+                                <h3 class="font-bold text-primary text-lg">Founder & ICT Instructor</h3>
+                                <p class="text-cta font-semibold text-sm">BitByte ICT Academy</p>
+                            </div>
+                            <span class="text-xs text-secondary/70 bg-white px-3 py-1 rounded-full border border-gray-100 mt-2 sm:mt-0 self-start">Mar 2023 - Present</span>
+                        </div>
+                        <ul class="space-y-2 mt-4">
+                            <li class="flex items-start gap-2 text-sm text-secondary">
+                                <svg class="w-4 h-4 text-cta mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Founded and manage BitByte ICT Academy, delivering structured ICT, computer science, and technology courses for HSC, SSC, and Honours level students.
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-secondary">
+                                <svg class="w-4 h-4 text-cta mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Designed and integrated interactive training modules on Generative AI tools, prompt engineering techniques, and AI-driven productivity.
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-secondary">
+                                <svg class="w-4 h-4 text-cta mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Created custom visual aids, presentations, and educational content using modern AI generation tools.
+                            </li>
+                            <li class="flex items-start gap-2 text-sm text-secondary">
+                                <svg class="w-4 h-4 text-cta mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                Conducted practical hands-on lab sessions, evaluated student progress through real-world projects, and provided targeted mentorship.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-surface">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <p class="font-handwritten text-xl text-cta mb-2">Featured Work</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary">Projects</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="fade-up bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover cursor-default" style="transition-delay: 0.05s;">
+                    <div class="h-48 bg-gradient-to-br from-blue-500/10 to-purple-500/10 flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-2xl bg-white shadow-sm flex items-center justify-center">
+                            <svg class="w-10 h-10 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-primary text-lg">AI Content Generation & Training Modules</h3>
+                            <span class="text-xs text-secondary/70 bg-surface px-2 py-1 rounded-full">2026</span>
+                        </div>
+                        <p class="text-sm text-secondary leading-relaxed mb-4">
+                            Developed comprehensive teaching guides and prompt libraries covering text generation, image synthesis, and automated content workflows using ChatGPT, Gemini, and Copilot.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-surface text-secondary text-xs px-3 py-1 rounded-full">ChatGPT</span>
+                            <span class="bg-surface text-secondary text-xs px-3 py-1 rounded-full">Gemini</span>
+                            <span class="bg-surface text-secondary text-xs px-3 py-1 rounded-full">Copilot</span>
+                            <span class="bg-surface text-secondary text-xs px-3 py-1 rounded-full">Prompt Engineering</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="fade-up bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover cursor-default" style="transition-delay: 0.1s;">
+                    <div class="h-48 bg-gradient-to-br from-emerald-500/10 to-blue-500/10 flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-2xl bg-white shadow-sm flex items-center justify-center">
+                            <svg class="w-10 h-10 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-primary text-lg">Interactive Business Intelligence Dashboard</h3>
+                            <span class="text-xs text-secondary/70 bg-surface px-2 py-1 rounded-full">2026</span>
+                        </div>
+                        <p class="text-sm text-secondary leading-relaxed mb-4">
+                            Developed an interactive BI dashboard using Power BI and SQL to visualize operational metrics and KPIs. Utilized visual analytics to demonstrate data storytelling principles.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-surface text-secondary text-xs px-3 py-1 rounded-full">Power BI</span>
+                            <span class="bg-surface text-secondary text-xs px-3 py-1 rounded-full">SQL</span>
+                            <span class="bg-surface text-secondary text-xs px-3 py-1 rounded-full">Data Visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <p class="font-handwritten text-xl text-cta mb-2">My Education</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary">Education</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="fade-up bg-surface rounded-2xl p-6 card-hover cursor-default">
+                    <div class="w-10 h-10 rounded-lg bg-cta/10 flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+                    </div>
+                    <h3 class="font-bold text-primary">BS in Computer Science</h3>
+                    <p class="text-cta text-sm font-semibold">University of the People</p>
+                    <p class="text-xs text-secondary/70 mt-1">2025 - Present (Online)</p>
+                </div>
+                <div class="fade-up bg-surface rounded-2xl p-6 card-hover cursor-default" style="transition-delay: 0.05s;">
+                    <div class="w-10 h-10 rounded-lg bg-cta/10 flex items-center justify-center mb-3">
+                        <svg class="w-5 h-5 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <h3 class="font-bold text-primary">Higher Secondary Certificate (HSC)</h3>
+                    <p class="text-cta text-sm font-semibold">Shibalaya Sadaruddin College</p>
+                    <p class="text-xs text-secondary/70 mt-1">Science Group | GPA: 4.92/5.00 | 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-surface">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <p class="font-handwritten text-xl text-cta mb-2">Verified Credentials</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary">Certifications</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="fade-up cert-card bg-white rounded-xl p-5 border border-gray-100 cursor-default" style="transition-delay: 0.02s;">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary text-sm leading-snug">Prompt Engineering for ChatGPT</p>
+                            <p class="text-xs text-secondary/70 mt-1">Vanderbilt University</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-up cert-card bg-white rounded-xl p-5 border border-gray-100 cursor-default" style="transition-delay: 0.04s;">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary text-sm leading-snug">Generative AI for Everyone</p>
+                            <p class="text-xs text-secondary/70 mt-1">DeepLearning.AI</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-up cert-card bg-white rounded-xl p-5 border border-gray-100 cursor-default" style="transition-delay: 0.06s;">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary text-sm leading-snug">Generative AI Leader Professional Certificate</p>
+                            <p class="text-xs text-secondary/70 mt-1">Google Cloud</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-up cert-card bg-white rounded-xl p-5 border border-gray-100 cursor-default" style="transition-delay: 0.08s;">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary text-sm leading-snug">Google AI Professional Certificate</p>
+                            <p class="text-xs text-secondary/70 mt-1">Google</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-up cert-card bg-white rounded-xl p-5 border border-gray-100 cursor-default" style="transition-delay: 0.1s;">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary text-sm leading-snug">Google Data Analyst Professional Certificate</p>
+                            <p class="text-xs text-secondary/70 mt-1">Google</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-up cert-card bg-white rounded-xl p-5 border border-gray-100 cursor-default" style="transition-delay: 0.12s;">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary text-sm leading-snug">CS50's Introduction to Databases with SQL</p>
+                            <p class="text-xs text-secondary/70 mt-1">Harvard University</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-up cert-card bg-white rounded-xl p-5 border border-gray-100 cursor-default sm:col-span-2 lg:col-span-1" style="transition-delay: 0.14s;">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-primary text-sm leading-snug">CS50's Introduction to Programming with Python</p>
+                            <p class="text-xs text-secondary/70 mt-1">Harvard University</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <p class="font-handwritten text-xl text-cta mb-2">Let's Connect</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-primary">Get In Touch</h2>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <div class="fade-up bg-surface rounded-2xl p-8 sm:p-10">
+                    <p class="text-secondary text-center mb-8 leading-relaxed">
+                        I'm always open to discussing new opportunities, collaborations, or just having a conversation about AI and education. Feel free to reach out!
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-6">
+                        <a href="mailto:ShikdarOmorFaruk@gmail.com" class="flex flex-col items-center gap-3 p-4 rounded-xl bg-white border border-gray-100 card-hover cursor-pointer text-center">
+                            <div class="w-10 h-10 rounded-lg bg-cta/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-cta" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-primary">Email</p>
+                                <p class="text-xs text-secondary/70 mt-1">ShikdarOmorFaruk@gmail.com</p>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/shikdar-omor-faruk" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-3 p-4 rounded-xl bg-white border border-gray-100 card-hover cursor-pointer text-center">
+                            <div class="w-10 h-10 rounded-lg bg-cta/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-cta" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-primary">LinkedIn</p>
+                                <p class="text-xs text-secondary/70 mt-1">shikdar-omor-faruk</p>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/8801718414464" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-3 p-4 rounded-xl bg-white border border-gray-100 card-hover cursor-pointer text-center">
+                            <div class="w-10 h-10 rounded-lg bg-cta/10 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-cta" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-semibold text-primary">WhatsApp</p>
+                                <p class="text-xs text-secondary/70 mt-1">+880 1718 414464</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-primary text-white/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <a href="#hero" class="font-handwritten text-2xl font-bold text-white cursor-pointer">SOF.</a>
+                <p class="text-sm">&copy; 2026 Shikdar Omor Faruk. All rights reserved.</p>
+                <div class="flex items-center gap-4">
+                    <a href="https://linkedin.com/in/shikdar-omor-faruk" target="_blank" rel="noopener noreferrer" class="hover:text-white cursor-pointer transition-colors duration-200" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="mailto:ShikdarOmorFaruk@gmail.com" class="hover:text-white cursor-pointer transition-colors duration-200" aria-label="Email">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </a>
+                    <a href="https://wa.me/8801718414464" target="_blank" rel="noopener noreferrer" class="hover:text-white cursor-pointer transition-colors duration-200" aria-label="WhatsApp">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Animations & Interactions -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+        closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
